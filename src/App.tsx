@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,10 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <button onClick={async () => {
+          const api_url = import.meta.env.VITE_API_URL;
+          await axios.get(`${api_url}/api/test`);
+        }}>Fetch</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
